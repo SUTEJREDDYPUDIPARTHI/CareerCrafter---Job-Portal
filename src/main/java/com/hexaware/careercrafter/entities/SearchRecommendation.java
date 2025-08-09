@@ -11,7 +11,6 @@ import jakarta.persistence.*;
  */
 
 
-
 @Entity
 @Table(name = "search_recommendations")
 public class SearchRecommendation {
@@ -35,7 +34,6 @@ public class SearchRecommendation {
 	}
 
 	public SearchRecommendation(int searchId, User user, String searchKeywords, String searchFilters) {
-		super();
 		this.searchId = searchId;
 		this.user = user;
 		this.searchKeywords = searchKeywords;
