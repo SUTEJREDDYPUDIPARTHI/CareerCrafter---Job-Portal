@@ -48,7 +48,6 @@ public class Application {
 
 	public Application(int applicationId, JobPosting job, JobSeeker jobSeeker, LocalDateTime applicationDate,
 			ApplicationStatus status, String coverLetter, String resumeFilePath) {
-		super();
 		this.applicationId = applicationId;
 		this.job = job;
 		this.jobSeeker = jobSeeker;
