@@ -6,7 +6,7 @@ import java.util.List;
 
 
 /*
- * Entity which is representing a user in the system 
+ * Entity which is representing a user in the system
  * A user can be a JobSeeker or Employer
  * Contains basic user details
  * 
