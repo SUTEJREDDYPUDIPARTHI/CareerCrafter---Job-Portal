@@ -6,7 +6,7 @@ import java.util.List;
 
 /*
  * Entity representing a JobPosting is made my an employer
- * It contains Job details
+ * It contains job details
  * It is linked to an employer and also connected to applications
  */
 
