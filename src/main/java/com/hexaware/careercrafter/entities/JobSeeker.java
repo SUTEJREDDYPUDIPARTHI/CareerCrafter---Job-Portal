@@ -10,7 +10,6 @@ import java.util.List;
  * 
  */
 
-
 @Entity
 @Table(name = "job_seekers")
 public class JobSeeker {
