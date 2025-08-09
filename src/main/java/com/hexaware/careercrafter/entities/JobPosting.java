@@ -4,14 +4,11 @@ import jakarta.persistence.*;
 import java.time.LocalDateTime;
 import java.util.List;
 
-
 /*
  * Entity representing a JobPosting is made my an employer
  * It contains Job details
  * It is linked to an employer and also connected to applications
- * 
  */
-
 
 @Entity
 @Table(name = "job_postings")
@@ -38,10 +35,12 @@ public class JobPosting {
 	private JobType jobType;
 
 	@Column(updatable = false)
-	private LocalDateTime postedDate = LocalDateTime.now();
+	private LocalDateTime postedDate;
 
 	private LocalDateTime expiryDate;
-	private boolean isActive = true;
+	
+	
+	private boolean active = true;
 
 	@OneToMany(mappedBy = "job", cascade = CascadeType.ALL)
 	private List<Application> applications;
@@ -55,9 +54,8 @@ public class JobPosting {
 	}
 
 	public JobPosting(int jobPostingId, Employer employer, String title, String description, String location,
-			JobType jobType, LocalDateTime postedDate, LocalDateTime expiryDate, boolean isActive,
+			JobType jobType, LocalDateTime postedDate, LocalDateTime expiryDate, boolean active,
 			List<Application> applications) {
-		super();
 		this.jobPostingId = jobPostingId;
 		this.employer = employer;
 		this.title = title;
@@ -66,7 +64,7 @@ public class JobPosting {
 		this.jobType = jobType;
 		this.postedDate = postedDate;
 		this.expiryDate = expiryDate;
-		this.isActive = isActive;
+		this.active = active;
 		this.applications = applications;
 	}
 
@@ -135,11 +133,11 @@ public class JobPosting {
 	}
 
 	public boolean isActive() {
-		return isActive;
+		return active;
 	}
 
-	public void setActive(boolean isActive) {
-		this.isActive = isActive;
+	public void setActive(boolean active) {
+		this.active = active;
 	}
 
 	public List<Application> getApplications() {

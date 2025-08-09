@@ -2,13 +2,21 @@ package com.hexaware.careercrafter.dto;
 
 import com.hexaware.careercrafter.entities.User.UserType;
 import jakarta.validation.constraints.*;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
 
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class UserDTO {
 
     private int userId;
 
     @NotBlank(message = "Name is mandatory")
-    @Size(min = 2, max = 50)
+    @Size(min = 2, max = 50, message = "Name must be between 2 and 50 characters")
     private String name;
 
     @NotBlank(message = "Email is required")
@@ -20,6 +28,8 @@ public class UserDTO {
     private String password;
 
     @NotNull(message = "User type is required")
-    @Pattern(regexp = "^(employer|job_seeker)$", message = "Role must be 'employer' or 'job_seeker'")
     private UserType userType;
+    
+    private boolean active;
+    
 }

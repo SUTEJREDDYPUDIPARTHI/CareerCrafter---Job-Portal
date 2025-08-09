@@ -1,7 +1,12 @@
 package com.hexaware.careercrafter.dto;
 
 import jakarta.validation.constraints.*;
+import lombok.*;
 
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class ResumeDTO {
 
     private int resumeId;

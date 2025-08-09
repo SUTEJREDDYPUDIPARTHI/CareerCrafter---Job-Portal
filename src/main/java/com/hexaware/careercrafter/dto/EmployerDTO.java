@@ -1,7 +1,15 @@
 package com.hexaware.careercrafter.dto;
 
 import jakarta.validation.constraints.*;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
 
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class EmployerDTO {
 
     private int employerId;
@@ -12,13 +20,7 @@ public class EmployerDTO {
     @NotBlank(message = "Company name is required")
     private String companyName;
 
-    @NotBlank(message = "Company address is required")
-    private String companyAddress;
-
-    @NotBlank(message = "Phone number is required")
-    @Pattern(regexp = "^[6-9]\\d{9}$", message = "Invalid phone number")
-    private String phone;
-
-    @Email(message="Email is required")
-    private String email;
+    @NotBlank(message = "Company description is required")
+    private String companyDescription;
+    
 }

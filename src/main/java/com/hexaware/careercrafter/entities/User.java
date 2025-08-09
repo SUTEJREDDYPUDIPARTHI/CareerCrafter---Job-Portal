@@ -59,7 +59,6 @@ public class User {
 	public User(int userId, String name, String email, String password, UserType userType, boolean isActive,
 			LocalDateTime createdAt, JobSeeker jobSeeker, Employer employer,
 			List<SearchRecommendation> searchRecommendations) {
-		super();
 		this.userId = userId;
 		this.name = name;
 		this.email = email;
@@ -72,6 +71,7 @@ public class User {
 		this.searchRecommendations = searchRecommendations;
 	}
 	
+	@PrePersist
 	public void prePersist() {
 		this.createdAt = LocalDateTime.now();
 	}

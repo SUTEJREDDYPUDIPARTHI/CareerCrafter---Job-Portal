@@ -1,14 +1,13 @@
 package com.hexaware.careercrafter.service;
 
-import com.hexaware.careercrafter.entities.*;
+import com.hexaware.careercrafter.dto.*;
 import java.util.List;
 
 public interface IJobSeekerService {
-	
-	JobSeeker createJobSeeker(JobSeeker jobSeeker);
-    JobSeeker getJobSeekerById(int id);
-    List<JobSeeker> getAllJobSeekers();
-    JobSeeker updateJobSeeker(JobSeeker jobSeeker);
+    JobSeekerDTO createJobSeeker(JobSeekerDTO jobSeekerDTO);
+    JobSeekerDTO getJobSeekerById(int id);
+    List<JobSeekerDTO> getAllJobSeekers();
+    JobSeekerDTO updateJobSeeker(JobSeekerDTO jobSeekerDTO);
     void deleteJobSeeker(int id);
-
 }
+

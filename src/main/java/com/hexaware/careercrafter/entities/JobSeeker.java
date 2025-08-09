@@ -32,7 +32,7 @@ public class JobSeeker {
     private String address;
     private String education;
     private String skills;
-    private String experience;
+    private Integer experience;
     
     @OneToMany(mappedBy = "jobSeeker", cascade = CascadeType.ALL)
     private List<Resume> resumes;
@@ -45,8 +45,7 @@ public class JobSeeker {
     }
 
 	public JobSeeker(int jobSeekerId, User user, String firstName, String lastName, String phone, String address,
-			String education, String skills, String experience, List<Resume> resumes, List<Application> applications) {
-		super();
+			String education, String skills, Integer experience, List<Resume> resumes, List<Application> applications) {
 		this.jobSeekerId = jobSeekerId;
 		this.user = user;
 		this.firstName = firstName;
@@ -124,11 +123,11 @@ public class JobSeeker {
 		this.skills = skills;
 	}
 
-	public String getExperience() {
+	public Integer getExperience() {
 		return experience;
 	}
 
-	public void setExperience(String experience) {
+	public void setExperience(Integer experience) {
 		this.experience = experience;
 	}
 

@@ -1,16 +1,16 @@
 package com.hexaware.careercrafter.service;
 
-import com.hexaware.careercrafter.entities.*;
+import com.hexaware.careercrafter.dto.*;
 import java.util.List;
 
 public interface IJobPostingService {
-	
-	JobPosting createJobPosting(JobPosting jobPosting);
-    JobPosting getJobPostingById(int id);
-    List<JobPosting> getAllJobPostings();
-    List<JobPosting> getActiveJobPostings();
-    List<JobPosting> getJobPostingsByEmployerId(int employerId);
-    JobPosting updateJobPosting(JobPosting jobPosting);
-    void deleteJobPosting(int id);
 
+    JobPostingDTO createJobPosting(JobPostingDTO jobPostingDTO);
+    JobPostingDTO getJobPostingById(int id);
+    List<JobPostingDTO> getAllJobPostings();
+    List<JobPostingDTO> getActiveJobPostings();
+    List<JobPostingDTO> getJobPostingsByEmployerId(int employerId);
+    JobPostingDTO updateJobPosting(JobPostingDTO jobPostingDTO);
+    void deleteJobPosting(int id);
 }
+

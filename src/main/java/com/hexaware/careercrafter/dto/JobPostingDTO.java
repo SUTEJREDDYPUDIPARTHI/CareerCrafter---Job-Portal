@@ -1,12 +1,17 @@
 package com.hexaware.careercrafter.dto;
 
+import com.hexaware.careercrafter.entities.JobPosting.JobType;
 import jakarta.validation.constraints.*;
+import lombok.Setter;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
 
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class JobPostingDTO {
-	
-	public enum JobType {
-		FULL_TIME, PART_TIME, INTERNSHIP
-	}
 
     private int jobPostingId;
 
@@ -24,15 +29,9 @@ public class JobPostingDTO {
     @NotBlank(message="Location is required")
     private String location;
 
-    @PositiveOrZero(message="Salary is required")
-    private double salary;
-
-    @NotBlank(message="Job type is required")
+    @NotNull(message="Job type is required")
     private JobType jobType;
 
-    @NotBlank(message="Experience Level is required")
-    private String experienceLevel;
+    private boolean active;
 
-    @NotBlank(message="Qualification is required")
-    private String qualifications;
 }

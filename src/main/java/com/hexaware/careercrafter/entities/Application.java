@@ -46,8 +46,8 @@ public class Application {
 		
 	}
 
-	public Application(int applicationId, JobPosting job, JobSeeker seeker, LocalDateTime applicationDate,
-			ApplicationStatus status, String coverLetter, String resumeFilePath, JobSeeker jobSeeker) {
+	public Application(int applicationId, JobPosting job, JobSeeker jobSeeker, LocalDateTime applicationDate,
+			ApplicationStatus status, String coverLetter, String resumeFilePath) {
 		super();
 		this.applicationId = applicationId;
 		this.job = job;
@@ -78,7 +78,7 @@ public class Application {
 		return jobSeeker;
 	}
 
-	public void setSeeker(JobSeeker jobSeeker) {
+	public void setJobSeeker(JobSeeker jobSeeker) {
 		this.jobSeeker = jobSeeker;
 	}
 

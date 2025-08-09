@@ -1,12 +1,12 @@
 package com.hexaware.careercrafter.service;
 
-import com.hexaware.careercrafter.entities.*;
+import com.hexaware.careercrafter.dto.*;
 import java.util.List;
 
 public interface IResumeService {
-    Resume uploadResume(Resume resume);
-    Resume getResumeById(int id);
-    List<Resume> getResumesByJobSeekerId(int jobSeekerId);
-    Resume updateResume(Resume resume);
+    ResumeDTO uploadResume(ResumeDTO resumeDTO);
+    ResumeDTO getResumeById(int id);
+    List<ResumeDTO> getResumesByJobSeekerId(int jobSeekerId);
+    ResumeDTO updateResume(ResumeDTO resumeDTO);
     void deleteResume(int id);
 }

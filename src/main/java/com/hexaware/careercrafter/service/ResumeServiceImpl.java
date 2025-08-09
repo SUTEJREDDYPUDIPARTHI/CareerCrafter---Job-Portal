@@ -1,11 +1,15 @@
 package com.hexaware.careercrafter.service;
 
+import com.hexaware.careercrafter.dto.ResumeDTO;
+import com.hexaware.careercrafter.entities.JobSeeker;
 import com.hexaware.careercrafter.entities.Resume;
+import com.hexaware.careercrafter.exception.InvalidRequestException;
+import com.hexaware.careercrafter.exception.ResourceNotFoundException;
 import com.hexaware.careercrafter.repository.ResumeRepository;
-import com.hexaware.careercrafter.exception.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -15,22 +19,30 @@ public class ResumeServiceImpl implements IResumeService {
     private ResumeRepository resumeRepository;
 
     @Override
-    public Resume uploadResume(Resume resume) {
-        if (resume.getFilePath() == null || resume.getJobSeeker() == null) {
+    public ResumeDTO uploadResume(ResumeDTO dto) {
+        if (dto.getFilePath() == null || dto.getJobSeekerId() == 0) {
             throw new InvalidRequestException("File path and associated job seeker are required.");
         }
-        return resumeRepository.save(resume);
+        Resume entity = mapToEntity(dto);
+        Resume saved = resumeRepository.save(entity);
+        return mapToDTO(saved);
     }
 
     @Override
-    public Resume getResumeById(int id) {
-        return resumeRepository.findById(id)
-            .orElseThrow(() -> new ResourceNotFoundException("Resume not found with ID: " + id));
+    public ResumeDTO getResumeById(int id) {
+        Resume entity = resumeRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Resume not found with ID: " + id));
+        return mapToDTO(entity);
     }
 
     @Override
-    public List<Resume> getResumesByJobSeekerId(int jobSeekerId) {
-        return resumeRepository.findByJobSeeker_JobSeekerId(jobSeekerId);
+    public List<ResumeDTO> getResumesByJobSeekerId(int jobSeekerId) {
+        List<Resume> resumes = resumeRepository.findByJobSeeker_JobSeekerId(jobSeekerId);
+        List<ResumeDTO> dtos = new ArrayList<>();
+        for (Resume resume : resumes) {
+            dtos.add(mapToDTO(resume));
+        }
+        return dtos;
     }
 
     @Override
@@ -42,10 +54,36 @@ public class ResumeServiceImpl implements IResumeService {
     }
 
     @Override
-    public Resume updateResume(Resume resume) {
-        if (!resumeRepository.existsById(resume.getResumeId())) {
-            throw new ResourceNotFoundException("Cannot update. Resume not found with ID: " + resume.getResumeId());
+    public ResumeDTO updateResume(ResumeDTO dto) {
+        if (!resumeRepository.existsById(dto.getResumeId())) {
+            throw new ResourceNotFoundException("Cannot update. Resume not found with ID: " + dto.getResumeId());
         }
-        return resumeRepository.save(resume);
+        Resume entity = mapToEntity(dto);
+        Resume saved = resumeRepository.save(entity);
+        return mapToDTO(saved);
+    }
+
+    // --- Mapping methods ---
+
+    private ResumeDTO mapToDTO(Resume entity) {
+        ResumeDTO dto = new ResumeDTO();
+        dto.setResumeId(entity.getResumeId());
+        dto.setJobSeekerId(entity.getJobSeeker() != null ? entity.getJobSeeker().getJobSeekerId() : 0);
+        dto.setFilePath(entity.getFilePath());
+        dto.setPrimary(entity.isPrimary());
+        return dto;
+    }
+
+    private Resume mapToEntity(ResumeDTO dto) {
+        Resume entity = new Resume();
+        entity.setResumeId(dto.getResumeId());
+
+        JobSeeker jobSeeker = new JobSeeker();
+        jobSeeker.setJobSeekerId(dto.getJobSeekerId());
+        entity.setJobSeeker(jobSeeker);
+
+        entity.setFilePath(dto.getFilePath());
+        entity.setPrimary(dto.isPrimary());
+        return entity;
     }
 }

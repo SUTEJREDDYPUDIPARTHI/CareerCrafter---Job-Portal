@@ -5,7 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 public interface ApplicationRepository extends JpaRepository<Application, Integer> {
-    List<Application> findByJobSeekerSeekerId(int seekerId);
-    List<Application> findByJobJobId(int jobId);
+    List<Application> findByJobSeekerJobSeekerId(int jobSeekerId);
+    List<Application> findByJob_JobPostingId(int jobPostingId);
 
 }
