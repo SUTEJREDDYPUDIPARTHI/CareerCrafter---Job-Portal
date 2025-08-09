@@ -37,7 +37,6 @@ public class Employer {
 
 	public Employer(int employerId, User user, String companyName, String companyDescription,
 			List<JobPosting> jobPostings) {
-		super();
 		this.employerId = employerId;
 		this.user = user;
 		this.companyName = companyName;
