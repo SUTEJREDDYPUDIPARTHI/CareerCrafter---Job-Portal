@@ -5,7 +5,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 /*
- * Global exception handler to manage custom exceptions
+ * GlobalExceptionHandler to manage custom exceptions
  */
 
 @RestControllerAdvice
