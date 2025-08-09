@@ -39,7 +39,6 @@ public class Resume {
 
 	public Resume(int resumeId, JobSeeker jobSeeker, String filePath, LocalDateTime uploadDate,
 			boolean isPrimary) {
-		super();
 		this.resumeId = resumeId;
 		this.jobSeeker = jobSeeker;
 		this.filePath = filePath;
