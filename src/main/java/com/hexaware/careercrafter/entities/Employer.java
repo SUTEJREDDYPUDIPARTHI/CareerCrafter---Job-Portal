@@ -5,7 +5,7 @@ import java.util.List;
 
 
 /*
- * This represents an Employer
+ * This represents an Employer class
  * An Employer is Linked to the User Entity
  * It is responsible for posting jobs
  * 
